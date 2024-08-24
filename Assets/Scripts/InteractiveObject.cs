@@ -21,7 +21,7 @@ public class InteractiveObject : MonoBehaviour, IBeginDragHandler, IDragHandler,
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
-        canvas = GetComponentInParent<Canvas>();
+        canvas = GameObject.FindObjectOfType<Canvas>();
         raycaster = canvas.GetComponent<GraphicRaycaster>();
     }
 
