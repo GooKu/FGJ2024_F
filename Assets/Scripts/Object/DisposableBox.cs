@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class DisposableBox : MonoBehaviour
 {
     [SerializeField] private GameObject item;
+    [SerializeField] private string stroy;
 
     private Button button;
     private LevelManagerBase levelManager;
@@ -21,6 +22,7 @@ public class DisposableBox : MonoBehaviour
     public void OnClick()
     {
         levelManager.GetItem(item);
+        levelManager.Dialog(stroy);
         button.interactable = false;
     }
 }
