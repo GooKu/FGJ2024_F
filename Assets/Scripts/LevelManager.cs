@@ -22,6 +22,8 @@ public class LevelManager : LevelManagerBase
     [SerializeField] Button restartBtn;
     [SerializeField] GameObject winPanel;
 
+    private Dictionary<string, WordConfig> lagecyBag = new();
+
     public override void Init(InventorySystem inventorySystem, DialogSystem dialogSystem)
     {
         this.inventorySystem = inventorySystem;
@@ -56,10 +58,8 @@ public class LevelManager : LevelManagerBase
         words.Add(getWordText(b.GetComponent<InteractiveObject>().ID));
         words.Add(getWordText(result.GetComponent<InteractiveObject>().ID));
         dialogSystem.ShowDialog($"把 {words[0]} 跟 {words[1]} 結合後得到了 {words[2]} ！");
-        checkAndRemoveObjectInInventory(a);
-        checkAndRemoveObjectInInventory(b);
-        Destroy(a);
-        Destroy(b);
+        checkAndRemoveObject(a);
+        checkAndRemoveObject(b);
         checkAndAddObjectInInventory(result);
     }
 
@@ -70,6 +70,12 @@ public class LevelManager : LevelManagerBase
 
     private void checkAndAddObjectInInventory(InteractiveObject ia)
     {
+        if (checkLagecy(ia.ID) && !lagecyBag.ContainsKey(ia.ID))
+        {
+            var config = wordConfigs[ia.ID];
+            lagecyBag.Add(ia.ID, config);
+        }
+
         if (inventorySystem.TryFindObjInSlotById(ia.ID, out _)) { return; }
         inventorySystem.AddItem(Instantiate(ia));
     }
@@ -93,17 +99,21 @@ public class LevelManager : LevelManagerBase
         inventorySystem.ClearAllItems();
     }
 
-    private void checkAndRemoveObjectInInventory(GameObject go)
+    private void checkAndRemoveObject(GameObject go)
     {
-        checkAndRemoveObjectInInventory(go.GetComponent<InteractiveObject>());
+        checkAndRemoveObject(go.GetComponent<InteractiveObject>());
     }
 
-    private void checkAndRemoveObjectInInventory(InteractiveObject ia)
+    private void checkAndRemoveObject(InteractiveObject ia)
     {
+        if (checkLagecy(ia.ID)) { return; }
+
         if (inventorySystem.TryFindObjInSlotById(ia.ID, out _))
         {
             inventorySystem.RemoveItem(ia);
         }
+
+        Destroy(ia.gameObject);
     }
 
     public override void Dialog(string message)
@@ -146,18 +156,27 @@ public class LevelManager : LevelManagerBase
             checkAndAddObjectInInventory(result);
             words.Add(getWordText(result.ID));
         }
-        checkAndRemoveObjectInInventory(source);
-        Destroy(source.gameObject);
+        checkAndRemoveObject(source);
         dialogSystem.ShowDialog($"把 {words[0]} 拆開後得到了 {words[1]} 跟 {words[2]}");
     }
 
-    private string getWordText(string key)
+    private string getWordText(string id)
     {
-        if(wordConfigs.TryGetValue(key, out var result))
+        if(wordConfigs.TryGetValue(id, out var result))
         {
             return result.Text;
         }
 
         return string.Empty;
+    }
+
+    private bool checkLagecy(string id)
+    {
+        if (wordConfigs.TryGetValue(id, out var result))
+        {
+            return result.IsLagecy;
+        }
+
+        return false;
     }
 }
