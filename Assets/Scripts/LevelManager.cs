@@ -19,14 +19,23 @@ public class LevelManager : LevelManagerBase
         checkAndRemoveObjectInInventory(b);
         Destroy(a);
         Destroy(b);
-        var obj = Instantiate(result);
-        inventorySystem.AddItem(obj.GetComponent<InteractiveObject>());
+        checkAndAddObjectInInventory(result);
+    }
+
+    private void checkAndAddObjectInInventory(GameObject go)
+    {
+        checkAndAddObjectInInventory(go.GetComponent<InteractiveObject>());
+    }
+
+    private void checkAndAddObjectInInventory(InteractiveObject ia)
+    {
+        if (inventorySystem.TryFindObjInSlotById(ia.ID, out _)) { return; }
+        inventorySystem.AddItem(Instantiate(ia));
     }
 
     private void checkAndRemoveObjectInInventory(GameObject go)
     {
-        InteractiveObject ia = go.GetComponent<InteractiveObject>();
-        checkAndRemoveObjectInInventory(ia);
+        checkAndRemoveObjectInInventory(go.GetComponent<InteractiveObject>());
     }
 
     private void checkAndRemoveObjectInInventory(InteractiveObject ia)
@@ -60,12 +69,10 @@ public class LevelManager : LevelManagerBase
 
     public override void Dismantle(InteractiveObject source, List<InteractiveObject> results)
     {
-        List<InteractiveObject> objs = new();
         foreach (InteractiveObject result in results)
         {
-            objs.Add(Instantiate(result));
+            checkAndAddObjectInInventory(result);
         }
-        inventorySystem.AddItem(objs);
         checkAndRemoveObjectInInventory(source);
         Destroy(source.gameObject);
     }
