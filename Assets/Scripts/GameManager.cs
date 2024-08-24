@@ -10,11 +10,13 @@ public class GameManager : MonoBehaviour
 
     [Header("System")]
     [SerializeField] DialogSystem dialogSystem;
+    [SerializeField] InventorySystem inventorySystem;
 
     void Start()
     {
         // init system
         dialogSystem.Init();
+        inventorySystem.Init();
     }
 
     void Update()
