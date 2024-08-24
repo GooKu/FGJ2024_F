@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.Networking.UnityWebRequest;
 
 public class LevelManager : LevelManagerBase
 {
@@ -27,7 +26,12 @@ public class LevelManager : LevelManagerBase
     private void checkAndRemoveObjectInInventory(GameObject go)
     {
         InteractiveObject ia = go.GetComponent<InteractiveObject>();
-        if (inventorySystem.TryFindObjInSlotById(ia.ID, out _)) 
+        checkAndRemoveObjectInInventory(ia);
+    }
+
+    private void checkAndRemoveObjectInInventory(InteractiveObject ia)
+    {
+        if (inventorySystem.TryFindObjInSlotById(ia.ID, out _))
         {
             inventorySystem.RemoveItem(ia);
         }
@@ -52,5 +56,12 @@ public class LevelManager : LevelManagerBase
     {
         var obj = Instantiate(item);
         inventorySystem.AddItem(obj.GetComponent<InteractiveObject>());
+    }
+
+    public override void Dismantle(InteractiveObject source, List<InteractiveObject> results)
+    {
+        inventorySystem.AddItem(results);
+        checkAndRemoveObjectInInventory(source);
+        Destroy(source.gameObject);
     }
 }

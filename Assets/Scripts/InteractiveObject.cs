@@ -18,6 +18,8 @@ public class InteractiveObject : MonoBehaviour, IBeginDragHandler, IDragHandler,
     private Vector3 orgPos;
     private LevelManagerBase levelManager;
 
+    private float lastEndDragTime;
+
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -79,6 +81,19 @@ public class InteractiveObject : MonoBehaviour, IBeginDragHandler, IDragHandler,
                         {
                             levelManager.Dialog(action.StringData);
                         }break;
+                    case InteractionType.Dismantle:
+                        {
+                            var delta = Time.timeSinceLevelLoad - lastEndDragTime;
+                            if(delta < .1f)
+                            {
+                                levelManager.Dismantle(this, action.DismantleResults);
+                            }
+                            else
+                            {
+                                lastEndDragTime = Time.timeSinceLevelLoad;
+                            }
+                        }
+                        break;
                 }
             }
             return;

@@ -29,4 +29,9 @@ public class MergeTest : LevelManagerBase
     {
         throw new System.NotImplementedException();
     }
+
+    public override void Dismantle(InteractiveObject source, List<InteractiveObject> results)
+    {
+        throw new System.NotImplementedException();
+    }
 }
