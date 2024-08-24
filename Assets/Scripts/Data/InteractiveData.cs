@@ -10,5 +10,4 @@ public class InteractiveData
     public InteractionType InteractionType;
     public string StringData;
     public GameObject Object;
-    public List<InteractiveObject> DismantleResults;
 }

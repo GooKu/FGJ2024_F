@@ -1,15 +1,17 @@
 ﻿using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InteractiveObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class InteractiveObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
     [SerializeField] private string id;
     public string ID => id;
     [SerializeField] ReferenceInteractiveDictionary targetObjects;
+    [SerializeField] public List<InteractiveObject> dismantleResults;
 
     private RectTransform rectTransform;
     private Canvas canvas;
@@ -17,8 +19,6 @@ public class InteractiveObject : MonoBehaviour, IBeginDragHandler, IDragHandler,
 
     private Vector3 orgPos;
     private LevelManagerBase levelManager;
-
-    private float lastEndDragTime;
 
     private void Awake()
     {
@@ -81,19 +81,6 @@ public class InteractiveObject : MonoBehaviour, IBeginDragHandler, IDragHandler,
                         {
                             levelManager.Dialog(action.StringData);
                         }break;
-                    case InteractionType.Dismantle:
-                        {
-                            var delta = Time.timeSinceLevelLoad - lastEndDragTime;
-                            if(delta < .1f)
-                            {
-                                levelManager.Dismantle(this, action.DismantleResults);
-                            }
-                            else
-                            {
-                                lastEndDragTime = Time.timeSinceLevelLoad;
-                            }
-                        }
-                        break;
                 }
             }
             return;
@@ -104,5 +91,11 @@ public class InteractiveObject : MonoBehaviour, IBeginDragHandler, IDragHandler,
     private void backToOrgPos()
     {
         transform.DOMove(orgPos, .1f);
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (eventData.clickCount < 2) { return; }
+        levelManager.Dismantle(this, dismantleResults);
     }
 }

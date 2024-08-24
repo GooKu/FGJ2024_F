@@ -60,7 +60,12 @@ public class LevelManager : LevelManagerBase
 
     public override void Dismantle(InteractiveObject source, List<InteractiveObject> results)
     {
-        inventorySystem.AddItem(results);
+        List<InteractiveObject> objs = new();
+        foreach (InteractiveObject result in results)
+        {
+            objs.Add(Instantiate(result));
+        }
+        inventorySystem.AddItem(objs);
         checkAndRemoveObjectInInventory(source);
         Destroy(source.gameObject);
     }
