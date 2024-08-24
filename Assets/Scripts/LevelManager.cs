@@ -6,11 +6,18 @@ public class LevelManager : LevelManagerBase
 {
     private InventorySystem inventorySystem;
     private DialogSystem dialogSystem;
+    int currentLevel = 0;
 
-    private void Awake()
+    [SerializeField] Transform levelRoot;
+    [SerializeField] List<GameObject> levelPrefabs;
+
+    [SerializeField] GameObject failPanel;
+    [SerializeField] GameObject winPanel;
+
+    public override void Init(InventorySystem inventorySystem, DialogSystem dialogSystem)
     {
-        inventorySystem = GameObject.FindObjectOfType<InventorySystem>();
-        dialogSystem = GameObject.FindObjectOfType<DialogSystem>();
+        this.inventorySystem = inventorySystem;
+        this.dialogSystem = dialogSystem;
     }
 
     public override void Merge(GameObject a, GameObject b, GameObject result)
@@ -21,6 +28,16 @@ public class LevelManager : LevelManagerBase
         Destroy(b);
         var obj = Instantiate(result);
         inventorySystem.AddItem(obj.GetComponent<InteractiveObject>());
+    }
+
+    public override void StartLevel(int level)
+    {
+        failPanel.SetActive(false);
+        winPanel.SetActive(false);
+
+        currentLevel = level;
+        Destroy(levelRoot.Find($"Level_{level}").gameObject);
+        Instantiate(levelPrefabs[level], levelRoot);
     }
 
     private void checkAndRemoveObjectInInventory(GameObject go)
@@ -44,12 +61,22 @@ public class LevelManager : LevelManagerBase
 
     public override void Fail()
     {
-        throw new System.NotImplementedException();
+        failPanel.SetActive(true);
     }
 
     public override void Pass()
     {
-        throw new System.NotImplementedException();
+        int totalLevelCount = levelPrefabs.Count;
+        bool isLastLevel = currentLevel == totalLevelCount - 1;
+
+        if (isLastLevel)
+        {
+            winPanel.SetActive(true);
+        }
+        else
+        {
+            StartLevel(currentLevel + 1);
+        }
     }
 
     public override void GetItem(GameObject item)

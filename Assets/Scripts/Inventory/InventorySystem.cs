@@ -58,6 +58,15 @@ public class InventorySystem : MonoBehaviour
         RemoveSlot(slot);
     }
 
+    public void ClearAllItems()
+    {
+        for (int i = 0; i < inventoryRoot.childCount; i++)
+        {
+            Destroy(inventoryRoot.GetChild(i).gameObject);
+        }
+        slots.Clear();
+    }
+
     public bool TryFindObjInSlotById(string objId, out InventorySlot slot)
     {
         for (int i = 0; i < slots.Count; i++)

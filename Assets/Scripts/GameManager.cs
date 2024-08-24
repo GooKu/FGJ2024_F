@@ -11,12 +11,14 @@ public class GameManager : MonoBehaviour
     [Header("System")]
     [SerializeField] DialogSystem dialogSystem;
     [SerializeField] InventorySystem inventorySystem;
+    [SerializeField] LevelManager levelManager;
 
     void Start()
     {
         // init system
         dialogSystem.Init();
         inventorySystem.Init();
+        levelManager.Init(inventorySystem, dialogSystem);
     }
 
     void Update()
@@ -24,11 +26,14 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void StartNewGame()
+    public void StartNewGame(int level)
     {
         // setup main scene
         titlePage.SetActive(false);
         mainScenePage.SetActive(true);
+        levelManager.StartLevel(level);
+        inventorySystem.ClearAllItems();
+        // TODO: clear lagecy inventory
     }
 
     public void LeaveCurrentGame()

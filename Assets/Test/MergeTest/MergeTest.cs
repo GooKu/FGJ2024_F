@@ -34,4 +34,14 @@ public class MergeTest : LevelManagerBase
     {
         throw new System.NotImplementedException();
     }
+
+    public override void Init(InventorySystem inventorySystem, DialogSystem dialogSystem)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void StartLevel(int level)
+    {
+        throw new System.NotImplementedException();
+    }
 }
