@@ -66,10 +66,20 @@ public class InteractiveObject : MonoBehaviour, IBeginDragHandler, IDragHandler,
                     case InteractionType.Merge:
                         {
                             levelManager.Merge(gameObject, result.gameObject, action.Object);
-                        }
-                        break;
+                        }break;
+                    case InteractionType.Pass:
+                        {
+                            levelManager.Pass();
+                        }break;
+                    case InteractionType.Fail:
+                        {
+                            levelManager.Fail();
+                        }break;
+                    case InteractionType.Dialog:
+                        {
+                            levelManager.Dialog(action.StringData);
+                        }break;
                 }
-
             }
             return;
         }

@@ -10,4 +10,18 @@ public class MergeTest : LevelManagerBase
         Destroy(a);
         Destroy(b);
     }
+
+    public override void Pass()
+    {
+        throw new System.NotImplementedException();
+    }
+    public override void Fail()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void Dialog(string message)
+    {
+        throw new System.NotImplementedException();
+    }
 }
