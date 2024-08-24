@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.Networking.UnityWebRequest;
 
 public class LevelManager : LevelManagerBase
 {
@@ -16,10 +15,26 @@ public class LevelManager : LevelManagerBase
 
     public override void Merge(GameObject a, GameObject b, GameObject result)
     {
+        checkAndRemoveObjectInInventory(a);
+        checkAndRemoveObjectInInventory(b);
         Destroy(a);
         Destroy(b);
         var obj = Instantiate(result);
         inventorySystem.AddItem(obj.GetComponent<InteractiveObject>());
+    }
+
+    private void checkAndRemoveObjectInInventory(GameObject go)
+    {
+        InteractiveObject ia = go.GetComponent<InteractiveObject>();
+        checkAndRemoveObjectInInventory(ia);
+    }
+
+    private void checkAndRemoveObjectInInventory(InteractiveObject ia)
+    {
+        if (inventorySystem.TryFindObjInSlotById(ia.ID, out _))
+        {
+            inventorySystem.RemoveItem(ia);
+        }
     }
 
     public override void Dialog(string message)
@@ -41,5 +56,17 @@ public class LevelManager : LevelManagerBase
     {
         var obj = Instantiate(item);
         inventorySystem.AddItem(obj.GetComponent<InteractiveObject>());
+    }
+
+    public override void Dismantle(InteractiveObject source, List<InteractiveObject> results)
+    {
+        List<InteractiveObject> objs = new();
+        foreach (InteractiveObject result in results)
+        {
+            objs.Add(Instantiate(result));
+        }
+        inventorySystem.AddItem(objs);
+        checkAndRemoveObjectInInventory(source);
+        Destroy(source.gameObject);
     }
 }

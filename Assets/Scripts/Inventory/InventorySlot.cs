@@ -17,5 +17,6 @@ public class InventorySlot : MonoBehaviour
         Item = item;
         item.transform.SetParent(transform);
         item.transform.localPosition = Vector3.zero;
+        item.transform.localScale = Vector3.one;
     }
 }

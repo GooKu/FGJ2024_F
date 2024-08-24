@@ -236,7 +236,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.00008643306}
+  m_AnchoredPosition: {x: 0, y: -0.000072441035}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &156750522
@@ -843,6 +843,7 @@ GameObject:
   - component: {fileID: 731881982}
   - component: {fileID: 731881981}
   - component: {fileID: 731881980}
+  - component: {fileID: 731881983}
   m_Layer: 5
   m_Name: flyer
   m_TagString: Untagged
@@ -951,6 +952,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 731881978}
   m_CullTransparentMesh: 1
+--- !u!114 &731881983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731881978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f58270fff237e04bb9ba683436154ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items:
+  - {fileID: 3493700849187792068, guid: 262c7f79b20d01f4bab88750e43702d4, type: 3}
+  stroy: 
 --- !u!1 &734736721
 GameObject:
   m_ObjectHideFlags: 0
@@ -1868,6 +1884,7 @@ GameObject:
   - component: {fileID: 1207206665}
   - component: {fileID: 1207206664}
   - component: {fileID: 1207206663}
+  - component: {fileID: 1207206666}
   m_Layer: 5
   m_Name: drawer
   m_TagString: Untagged
@@ -1976,6 +1993,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1207206661}
   m_CullTransparentMesh: 1
+--- !u!114 &1207206666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1207206661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f58270fff237e04bb9ba683436154ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items:
+  - {fileID: 3493700849187792068, guid: 7b0be742239a54643a997779b2ce69f8, type: 3}
+  stroy: 
 --- !u!1 &1284642105
 GameObject:
   m_ObjectHideFlags: 0
@@ -2556,7 +2588,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items:
-  - {fileID: 7435469710316193721, guid: e53b46743e578f14fb09168d1d4647cc, type: 3}
+  - {fileID: 3493700849187792068, guid: 94f4421959e906c4d8a3b5563116b475, type: 3}
   stroy: "\u7A97\u6236\u7684\u908A\u6846\u597D\u50CF\u662F\u300C\u91D1\u300D\u5C6C\u88FD\u7684"
 --- !u!1 &1834088925
 GameObject:
@@ -3169,7 +3201,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 283126325}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.99987346
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

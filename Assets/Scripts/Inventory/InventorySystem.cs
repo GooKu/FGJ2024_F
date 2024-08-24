@@ -47,10 +47,15 @@ public class InventorySystem : MonoBehaviour
     {
         for (int i = 0; i < items.Count; i++)
         {
-            bool canFindSlot = TryFindObjInSlotById(items[i].ID, out InventorySlot slot);
-            if (!canFindSlot) continue;
-            RemoveSlot(slot);
+            RemoveItem(items[i]);
         }
+    }
+
+    public void RemoveItem(InteractiveObject item)
+    {
+        bool canFindSlot = TryFindObjInSlotById(item.ID, out InventorySlot slot);
+        if (!canFindSlot) return;
+        RemoveSlot(slot);
     }
 
     public bool TryFindObjInSlotById(string objId, out InventorySlot slot)
