@@ -16,10 +16,21 @@ public class LevelManager : LevelManagerBase
 
     public override void Merge(GameObject a, GameObject b, GameObject result)
     {
+        checkAndRemoveObjectInInventory(a);
+        checkAndRemoveObjectInInventory(b);
         Destroy(a);
         Destroy(b);
         var obj = Instantiate(result);
         inventorySystem.AddItem(obj.GetComponent<InteractiveObject>());
+    }
+
+    private void checkAndRemoveObjectInInventory(GameObject go)
+    {
+        InteractiveObject ia = go.GetComponent<InteractiveObject>();
+        if (inventorySystem.TryFindObjInSlotById(ia.ID, out _)) 
+        {
+            inventorySystem.RemoveItem(ia);
+        }
     }
 
     public override void Dialog(string message)
