@@ -95,6 +95,7 @@ public class InteractiveObject : MonoBehaviour, IBeginDragHandler, IDragHandler,
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        if(dismantleResults.Count == 0) { return; }
         if (eventData.clickCount < 2) { return; }
         levelManager.Dismantle(this, dismantleResults);
     }

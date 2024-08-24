@@ -15,6 +15,7 @@ public class DialogSystem : MonoBehaviour
 
     public void ShowDialog(string text, float duration = 1f)
     {
+        ClearDialog();
         dialogText.DOText(text, duration);
     }
 

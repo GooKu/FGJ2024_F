@@ -1,12 +1,18 @@
+using DG.Tweening.Core.Easing;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 public class LevelManager : LevelManagerBase
 {
+    [SerializeField] private TextAsset wordConfigSource;
     private InventorySystem inventorySystem;
     private DialogSystem dialogSystem;
     int currentLevel = 0;
+
+    private Dictionary<string, WordConfig> wordConfigs = new();
+    private const string pattern = ",(?=(?:[^\"]*\"[^\"]*\")*(?![^\"]*\"))";
 
     [SerializeField] Transform levelRoot;
     [SerializeField] List<GameObject> levelPrefabs;
@@ -18,16 +24,46 @@ public class LevelManager : LevelManagerBase
     {
         this.inventorySystem = inventorySystem;
         this.dialogSystem = dialogSystem;
+        ReadWordConfig();
+    }
+    
+    private void ReadWordConfig()
+    {
+        string[] lines = wordConfigSource.text.Split("\r\n");
+        for (int i = 1; i < lines.Length; i++)
+        {
+            string[] result = Regex.Split(lines[i], pattern);
+            WordConfig wc = new();
+            wc.ID = result[0];
+            wc.Text = result[1];
+            wc.IsLagecy = result[2] == "T";
+            wordConfigs.Add(wc.ID, wc);
+        }
     }
 
     public override void Merge(GameObject a, GameObject b, GameObject result)
     {
+        List<string> words = new();
+        words.Add(getWordText(a.GetComponent<InteractiveObject>().ID));
+        words.Add(getWordText(b.GetComponent<InteractiveObject>().ID));
+        words.Add(getWordText(result.GetComponent<InteractiveObject>().ID));
+        dialogSystem.ShowDialog($"把 {words[0]} 跟 {words[1]} 結合後得到了 {words[2]} ！");
         checkAndRemoveObjectInInventory(a);
         checkAndRemoveObjectInInventory(b);
         Destroy(a);
         Destroy(b);
-        var obj = Instantiate(result);
-        inventorySystem.AddItem(obj.GetComponent<InteractiveObject>());
+        checkAndAddObjectInInventory(result);
+    }
+
+    private void checkAndAddObjectInInventory(GameObject go)
+    {
+        checkAndAddObjectInInventory(go.GetComponent<InteractiveObject>());
+    }
+
+    private void checkAndAddObjectInInventory(InteractiveObject ia)
+    {
+        if (inventorySystem.TryFindObjInSlotById(ia.ID, out _)) { return; }
+        inventorySystem.AddItem(Instantiate(ia));
     }
 
     public override void StartLevel(int level)
@@ -42,8 +78,7 @@ public class LevelManager : LevelManagerBase
 
     private void checkAndRemoveObjectInInventory(GameObject go)
     {
-        InteractiveObject ia = go.GetComponent<InteractiveObject>();
-        checkAndRemoveObjectInInventory(ia);
+        checkAndRemoveObjectInInventory(go.GetComponent<InteractiveObject>());
     }
 
     private void checkAndRemoveObjectInInventory(InteractiveObject ia)
@@ -87,13 +122,25 @@ public class LevelManager : LevelManagerBase
 
     public override void Dismantle(InteractiveObject source, List<InteractiveObject> results)
     {
-        List<InteractiveObject> objs = new();
+        List<string> words = new();
+        words.Add(getWordText(source.ID));
         foreach (InteractiveObject result in results)
         {
-            objs.Add(Instantiate(result));
+            checkAndAddObjectInInventory(result);
+            words.Add(getWordText(result.ID));
         }
-        inventorySystem.AddItem(objs);
         checkAndRemoveObjectInInventory(source);
         Destroy(source.gameObject);
+        dialogSystem.ShowDialog($"把 {words[0]} 拆開後得到了 {words[1]} 跟 {words[2]}");
+    }
+
+    private string getWordText(string key)
+    {
+        if(wordConfigs.TryGetValue(key, out var result))
+        {
+            return result.Text;
+        }
+
+        return string.Empty;
     }
 }
