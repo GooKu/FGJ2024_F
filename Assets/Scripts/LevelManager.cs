@@ -32,6 +32,11 @@ public class LevelManager : LevelManagerBase
 
     public override void Merge(GameObject a, GameObject b, GameObject result)
     {
+        List<string> words = new();
+        words.Add(getWordText(a.GetComponent<InteractiveObject>().ID));
+        words.Add(getWordText(b.GetComponent<InteractiveObject>().ID));
+        words.Add(getWordText(result.GetComponent<InteractiveObject>().ID));
+        dialogSystem.ShowDialog($"把 {words[0]} 跟 {words[1]} 結合後得到了 {words[2]} ！");
         checkAndRemoveObjectInInventory(a);
         checkAndRemoveObjectInInventory(b);
         Destroy(a);
@@ -86,11 +91,25 @@ public class LevelManager : LevelManagerBase
 
     public override void Dismantle(InteractiveObject source, List<InteractiveObject> results)
     {
+        List<string> words = new();
+        words.Add(getWordText(source.ID));
         foreach (InteractiveObject result in results)
         {
             checkAndAddObjectInInventory(result);
+            words.Add(getWordText(result.ID));
         }
         checkAndRemoveObjectInInventory(source);
         Destroy(source.gameObject);
+        dialogSystem.ShowDialog($"把 {words[0]} 拆開後得到了 {words[1]} 跟 {words[2]}");
+    }
+
+    private string getWordText(string key)
+    {
+        if(wordConfigs.TryGetValue(key, out var result))
+        {
+            return result.Text;
+        }
+
+        return string.Empty;
     }
 }
