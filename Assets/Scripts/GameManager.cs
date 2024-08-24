@@ -4,19 +4,23 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("UI")]
     [SerializeField] GameObject titlePage;
     [SerializeField] GameObject mainScenePage;
+
+    [Header("System")]
+    [SerializeField] DialogSystem dialogSystem;
 
     void Start()
     {
         // init system
+        dialogSystem.Init();
     }
 
     void Update()
     {
-        
-    }
 
+    }
 
     public void StartNewGame()
     {
