@@ -33,9 +33,14 @@ public class InventorySystem : MonoBehaviour
     {
         for (int i = 0; i < items.Count; i++)
         {
-            InventorySlot slot = AddSlot();
-            slot.AddItem(items[i]);
+            AddItem(items[i]);
         }
+    }
+
+    public void AddItem(InteractiveObject item)
+    {
+        InventorySlot slot = AddSlot();
+        slot.AddItem(item);
     }
 
     public void RemoveItem(List<InteractiveObject> items)
