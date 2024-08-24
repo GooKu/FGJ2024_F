@@ -16,7 +16,7 @@ public class InteractiveObject : MonoBehaviour, IBeginDragHandler, IDragHandler,
     private GraphicRaycaster raycaster;
 
     private Vector3 orgPos;
-    private LevelManager levelManager;
+    private LevelManagerBase levelManager;
 
     private void Awake()
     {
@@ -27,7 +27,7 @@ public class InteractiveObject : MonoBehaviour, IBeginDragHandler, IDragHandler,
 
     private void Start()
     {
-        levelManager = GameObject.FindObjectOfType<LevelManager>();
+        levelManager = GameObject.FindObjectOfType<LevelManagerBase>();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
