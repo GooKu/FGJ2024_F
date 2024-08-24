@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelManager : LevelManagerBase
 {
@@ -18,6 +19,7 @@ public class LevelManager : LevelManagerBase
     [SerializeField] List<GameObject> levelPrefabs;
 
     [SerializeField] GameObject failPanel;
+    [SerializeField] Button restartBtn;
     [SerializeField] GameObject winPanel;
 
     public override void Init(InventorySystem inventorySystem, DialogSystem dialogSystem)
@@ -39,6 +41,12 @@ public class LevelManager : LevelManagerBase
             wc.IsLagecy = result[2] == "T";
             wordConfigs.Add(wc.ID, wc);
         }
+    }
+
+    private void RegisterRestartBtnEvent(int level)
+    {
+        restartBtn.onClick.RemoveAllListeners();
+        restartBtn.onClick.AddListener(() => RestartLevel(level));
     }
 
     public override void Merge(GameObject a, GameObject b, GameObject result)
@@ -71,9 +79,18 @@ public class LevelManager : LevelManagerBase
         failPanel.SetActive(false);
         winPanel.SetActive(false);
 
+        dialogSystem.ClearDialog();
+
         currentLevel = level;
         Destroy(levelRoot.Find($"Level_{level}").gameObject);
-        Instantiate(levelPrefabs[level], levelRoot);
+        Instantiate(levelPrefabs[level], levelRoot).name = $"Level_{level}";
+        RegisterRestartBtnEvent(level);
+    }
+
+    private void RestartLevel(int level)
+    {
+        StartLevel(level);
+        inventorySystem.ClearAllItems();
     }
 
     private void checkAndRemoveObjectInInventory(GameObject go)

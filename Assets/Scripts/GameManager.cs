@@ -19,11 +19,20 @@ public class GameManager : MonoBehaviour
         dialogSystem.Init();
         inventorySystem.Init();
         levelManager.Init(inventorySystem, dialogSystem);
+
+        titlePage.SetActive(true);
     }
 
     void Update()
     {
-
+        if (Input.GetKey(KeyCode.C))
+        {
+            levelManager.Pass();
+        }
+        if (Input.GetKey(KeyCode.V))
+        {
+            levelManager.Fail();
+        }
     }
 
     public void StartNewGame(int level)
