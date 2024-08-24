@@ -236,7 +236,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000072441035}
+  m_AnchoredPosition: {x: 0, y: -0.0001335144}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &156750522
@@ -889,7 +889,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -965,8 +965,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items:
-  - {fileID: 3493700849187792068, guid: 262c7f79b20d01f4bab88750e43702d4, type: 3}
-  stroy: 
+  - {fileID: 3493700849187792068, guid: a84f854b5ade46641906badd6f9d2542, type: 3}
+  stroy: "\u5BEB\u8457\u300E\u547C\u300C\u7C72\u300D\u6C11\u773E\uFF0C\u661F\u661F\u4E4B\u706B\u53EF\u4EE5\u71CE\u539F\u300F"
 --- !u!1 &734736721
 GameObject:
   m_ObjectHideFlags: 0
@@ -1260,6 +1260,7 @@ GameObject:
   - component: {fileID: 782423427}
   - component: {fileID: 782423426}
   - component: {fileID: 782423425}
+  - component: {fileID: 782423428}
   m_Layer: 5
   m_Name: cabinet
   m_TagString: Untagged
@@ -1305,7 +1306,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -1368,6 +1369,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 782423423}
   m_CullTransparentMesh: 1
+--- !u!114 &782423428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782423423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f58270fff237e04bb9ba683436154ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items:
+  - {fileID: 3493700849187792068, guid: 5cec498caadfa9246bad7a545391df73, type: 3}
+  stroy: "\u6AC3\u5B50\u7684\u6728\u677F\u4E0A\u597D\u50CF\u300C\u984C\u300D\u4E86\u4E00\u4E9B\u5B57\uFF0C\u4F46\u770B\u4E0D\u61C2"
 --- !u!1 &805217560
 GameObject:
   m_ObjectHideFlags: 0
@@ -2006,8 +2022,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items:
-  - {fileID: 3493700849187792068, guid: 7b0be742239a54643a997779b2ce69f8, type: 3}
-  stroy: 
+  - {fileID: 3493700849187792068, guid: d541e577077dd094cb598b1c7c140cff, type: 3}
+  stroy: "\u88E1\u9762\u653E\u8457\u4E00\u628A\u300C\u5315\u300D\u9996"
 --- !u!1 &1284642105
 GameObject:
   m_ObjectHideFlags: 0
@@ -2935,7 +2951,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -3055,7 +3071,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -3200,7 +3216,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 283126326}
   m_HandleRect: {fileID: 283126325}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
