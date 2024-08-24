@@ -16,12 +16,18 @@ public class InteractiveObject : MonoBehaviour, IBeginDragHandler, IDragHandler,
     private GraphicRaycaster raycaster;
 
     private Vector3 orgPos;
+    private LevelManager levelManager;
 
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
         canvas = GetComponentInParent<Canvas>();
         raycaster = canvas.GetComponent<GraphicRaycaster>();
+    }
+
+    private void Start()
+    {
+        levelManager = GameObject.FindObjectOfType<LevelManager>();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -52,7 +58,19 @@ public class InteractiveObject : MonoBehaviour, IBeginDragHandler, IDragHandler,
                 backToOrgPos();
                 return;
             }
-            //TODO
+
+            foreach (var action in actions)
+            {
+                switch (action.InteractionType)
+                {
+                    case InteractionType.Merge:
+                        {
+                            levelManager.Merge(gameObject, result.gameObject, action.Object);
+                        }
+                        break;
+                }
+
+            }
             return;
         }
         backToOrgPos();
