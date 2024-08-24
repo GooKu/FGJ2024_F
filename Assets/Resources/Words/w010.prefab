@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 2631689913630420355, guid: 68c0bbab29539354db4e00e83a176769, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 58836aa8e340d8c43bce368ece727ed6, type: 3}
+      objectReference: {fileID: 21300000, guid: 39154aa2a23d2ae498ab3565cf303a69, type: 3}
     - target: {fileID: 2945146142845434848, guid: 68c0bbab29539354db4e00e83a176769, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -94,11 +94,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3743769311094922331, guid: 68c0bbab29539354db4e00e83a176769, type: 3}
       propertyPath: m_Name
-      value: w002
+      value: w010
       objectReference: {fileID: 0}
     - target: {fileID: 4349351266032812373, guid: 68c0bbab29539354db4e00e83a176769, type: 3}
       propertyPath: id
-      value: w002
+      value: w010
       objectReference: {fileID: 0}
     - target: {fileID: 4349351266032812373, guid: 68c0bbab29539354db4e00e83a176769, type: 3}
       propertyPath: targetObjects.m_keys.Array.size
@@ -110,19 +110,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4349351266032812373, guid: 68c0bbab29539354db4e00e83a176769, type: 3}
       propertyPath: targetObjects.m_values.Array.data[0].data.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4349351266032812373, guid: 68c0bbab29539354db4e00e83a176769, type: 3}
       propertyPath: targetObjects.m_values.Array.data[0].data.Array.data[0].Object
       value: 
-      objectReference: {fileID: 3493700849187792068, guid: 94f4421959e906c4d8a3b5563116b475, type: 3}
+      objectReference: {fileID: 3493700849187792068, guid: 991d0eca0fd7d8f4087e6ff5ee66ef4a, type: 3}
     - target: {fileID: 4349351266032812373, guid: 68c0bbab29539354db4e00e83a176769, type: 3}
       propertyPath: targetObjects.m_values.Array.data[0].data.Array.data[1].Object
       value: 
       objectReference: {fileID: 3493700849187792068, guid: 262c7f79b20d01f4bab88750e43702d4, type: 3}
     - target: {fileID: 4349351266032812373, guid: 68c0bbab29539354db4e00e83a176769, type: 3}
       propertyPath: targetObjects.m_values.Array.data[0].data.Array.data[0].InteractionType
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4349351266032812373, guid: 68c0bbab29539354db4e00e83a176769, type: 3}
       propertyPath: targetObjects.m_values.Array.data[0].data.Array.data[1].InteractionType
