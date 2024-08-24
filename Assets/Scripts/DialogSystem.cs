@@ -7,6 +7,7 @@ using DG.Tweening;
 public class DialogSystem : MonoBehaviour
 {
     [SerializeField] Text dialogText;
+    Tweener textTweener;
 
     public void Init()
     {
@@ -15,8 +16,9 @@ public class DialogSystem : MonoBehaviour
 
     public void ShowDialog(string text, float duration = 1f)
     {
+        textTweener?.Kill();
         ClearDialog();
-        dialogText.DOText(text, duration);
+        textTweener = dialogText.DOText(text, duration);
     }
 
     public void ClearDialog()
