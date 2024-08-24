@@ -16,9 +16,9 @@ public class DisposableBox : MonoBehaviour
     {
         levelManager = GameObject.FindObjectOfType<LevelManagerBase>();
         button = GetComponent<Button>();
+        button.onClick.AddListener(OnClick);
     }
 
-    // setup at button
     public void OnClick()
     {
         foreach (var item in items)
