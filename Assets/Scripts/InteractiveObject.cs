@@ -1,18 +1,19 @@
-using DG.Tweening;
+﻿using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class InteractiveObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [SerializeField] private string id;
     public string ID => id;
     [SerializeField] ReferenceInteractiveDictionary targetObjects;
-    [SerializeField] List<InteractiveData> interactives;
 
     private RectTransform rectTransform;
     private Canvas canvas;
+    private GraphicRaycaster raycaster;
 
     private Vector3 orgPos;
 
@@ -20,6 +21,7 @@ public class InteractiveObject : MonoBehaviour, IBeginDragHandler, IDragHandler,
     {
         rectTransform = GetComponent<RectTransform>();
         canvas = GetComponentInParent<Canvas>();
+        raycaster = canvas.GetComponent<GraphicRaycaster>();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -34,7 +36,30 @@ public class InteractiveObject : MonoBehaviour, IBeginDragHandler, IDragHandler,
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        //TODO: check reference
+        var pointerEventData = new PointerEventData(EventSystem.current);
+        pointerEventData.position = rectTransform.position;
+
+        List<RaycastResult> results = new List<RaycastResult>();
+        raycaster.Raycast(pointerEventData, results);
+
+        foreach (RaycastResult result in results)
+        {
+            if (result.gameObject == gameObject) { continue; }
+            //Debug.Log("Overlap detected with: " + result.gameObject.name);
+            if(!result.gameObject.TryGetComponent<InteractiveObject>(out var interactiveObject)) { continue; }
+            if (!targetObjects.TryGetValue(interactiveObject.ID, out var actions))
+            {
+                backToOrgPos();
+                return;
+            }
+            //TODO
+            return;
+        }
+        backToOrgPos();
+    }
+
+    private void backToOrgPos()
+    {
         transform.DOMove(orgPos, .1f);
     }
 }
