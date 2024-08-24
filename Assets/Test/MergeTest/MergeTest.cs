@@ -24,4 +24,9 @@ public class MergeTest : LevelManagerBase
     {
         throw new System.NotImplementedException();
     }
+
+    public override void GetItem(GameObject item)
+    {
+        throw new System.NotImplementedException();
+    }
 }
