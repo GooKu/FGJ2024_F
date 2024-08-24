@@ -1,16 +1,33 @@
+using DG.Tweening.Core.Easing;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 public class LevelManager : LevelManagerBase
 {
+    [SerializeField] private TextAsset wordConfigSource;
     private InventorySystem inventorySystem;
     private DialogSystem dialogSystem;
+
+    private Dictionary<string, WordConfig> wordConfigs = new();
+    private const string pattern = ",(?=(?:[^\"]*\"[^\"]*\")*(?![^\"]*\"))";
 
     private void Awake()
     {
         inventorySystem = GameObject.FindObjectOfType<InventorySystem>();
         dialogSystem = GameObject.FindObjectOfType<DialogSystem>();
+
+        string[] lines = wordConfigSource.text.Split("\r\n");
+        for (int i = 1; i < lines.Length; i++)
+        {
+            string[] result = Regex.Split(lines[i], pattern);
+            WordConfig wc = new();
+            wc.ID = result[0];
+            wc.Text = result[1];
+            wc.IsLagecy = result[2] == "T";
+            wordConfigs.Add(wc.ID, wc);
+        }
     }
 
     public override void Merge(GameObject a, GameObject b, GameObject result)
