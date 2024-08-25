@@ -47,6 +47,7 @@ public class InteractiveObject : StageObject, IBeginDragHandler, IDragHandler, I
             if (result.gameObject == gameObject) { continue; }
             //Debug.Log("Overlap detected with: " + result.gameObject.name);
             if(!result.gameObject.TryGetComponent<StageObject>(out var stageObject)) { continue; }
+            stageObject.Touch(this);
             if (!targetObjects.TryGetValue(stageObject.ID, out var actions))
             {
                 backToOrgPos();
@@ -73,7 +74,7 @@ public class InteractiveObject : StageObject, IBeginDragHandler, IDragHandler, I
                         {
                             levelManager.Dialog(action.StringData);
                         }break;
-                        case InteractionType.DeleteSelf:
+                    case InteractionType.DeleteSelf:
                         {
                             if (!string.IsNullOrEmpty(action.StringData))
                             {
