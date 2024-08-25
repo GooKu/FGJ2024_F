@@ -240,5 +240,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f82e6992461d6d4eb9dd61585db0182, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 
+  id: qte
   timeBar: {fileID: 4631707415877345786}
+  PassAction:
+    m_PersistentCalls:
+      m_Calls: []
