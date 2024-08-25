@@ -128,7 +128,7 @@ public class LevelManager : LevelManagerBase
         failPanel.SetActive(true);
     }
 
-    public override void Pass()
+    public override void Pass(InteractiveObject interactiveObject = null)
     {
         int totalLevelCount = levelPrefabs.Count;
         bool isLastLevel = currentLevel == totalLevelCount - 1;
@@ -140,6 +140,11 @@ public class LevelManager : LevelManagerBase
         else
         {
             StartLevel(currentLevel + 1);
+        }
+
+        if(interactiveObject != null)
+        {
+            checkAndRemoveObject(interactiveObject);
         }
     }
 

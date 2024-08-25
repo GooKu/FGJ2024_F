@@ -11,7 +11,7 @@ public class MergeTest : LevelManagerBase
         Destroy(b);
     }
 
-    public override void Pass()
+    public override void Pass(InteractiveObject interactiveObject = null)
     {
         throw new System.NotImplementedException();
     }
