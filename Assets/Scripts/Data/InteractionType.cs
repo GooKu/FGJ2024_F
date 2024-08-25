@@ -5,5 +5,6 @@ public enum InteractionType
     Dismantle,
     Pass,
     Fail,
-    DeleteSelf
+    DeleteSelf,
+    AddObject
 }

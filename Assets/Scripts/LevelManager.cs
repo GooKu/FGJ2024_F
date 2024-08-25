@@ -92,10 +92,10 @@ public class LevelManager : LevelManagerBase
         dialogSystem.ShowDialog($"把 {words[0]} 跟 {words[1]} 結合後得到了 {words[2]} ！");
         checkAndRemoveObject(a);
         checkAndRemoveObject(b);
-        checkAndAddObjectInInventory(result);
+        CheckAndAddObjectInInventory(result);
     }
 
-    private void checkAndAddObjectInInventory(GameObject go)
+    public void CheckAndAddObjectInInventory(GameObject go)
     {
         checkAndAddObjectInInventory(go.GetComponent<InteractiveObject>());
     }
@@ -193,7 +193,7 @@ public class LevelManager : LevelManagerBase
 
     public override void GetItem(GameObject item)
     {
-        checkAndAddObjectInInventory(item);
+        CheckAndAddObjectInInventory(item);
     }
 
     public override void Dismantle(InteractiveObject source, List<InteractiveObject> results)

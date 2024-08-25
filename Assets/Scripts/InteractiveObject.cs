@@ -82,6 +82,12 @@ public class InteractiveObject : StageObject, IBeginDragHandler, IDragHandler, I
                             }
                             levelManager.CheckAndRemoveObject(this);
                         } break;
+                    case InteractionType.AddObject:
+                        {
+                            levelManager.CheckAndAddObjectInInventory(action.Object);
+                            backToOrgPos();
+                        }
+                        break;
                 }
             }
             return;
