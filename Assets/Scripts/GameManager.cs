@@ -40,9 +40,8 @@ public class GameManager : MonoBehaviour
         // setup main scene
         titlePage.SetActive(false);
         mainScenePage.SetActive(true);
+        levelManager.NewGameInit();
         levelManager.StartLevel(level);
-        inventorySystem.ClearAllItems();
-        // TODO: clear lagecy inventory
     }
 
     public void LeaveCurrentGame()

@@ -37,6 +37,13 @@ public class LevelManager : LevelManagerBase
         ReadWordConfig();
     }
 
+    public void NewGameInit()
+    {
+        lagecyBag.Clear();
+        getLagecyThisTime.Clear();
+        inventorySystem.ClearAllItems();
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.T))
