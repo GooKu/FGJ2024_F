@@ -7,10 +7,10 @@ public class StageObject : MonoBehaviour
     [SerializeField] protected string id;
     public string ID => id;
 
-    protected LevelManagerBase levelManager;
+    protected LevelManager levelManager;
 
     protected virtual void Start()
     {
-        levelManager = GameObject.FindObjectOfType<LevelManagerBase>();
+        levelManager = GameObject.FindObjectOfType<LevelManager>();
     }
 }

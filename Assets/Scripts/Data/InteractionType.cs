@@ -4,5 +4,6 @@ public enum InteractionType
     Merge,
     Dismantle,
     Pass,
-    Fail
+    Fail,
+    DeleteSelf
 }

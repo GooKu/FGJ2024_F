@@ -135,10 +135,10 @@ public class LevelManager : LevelManagerBase
 
     private void checkAndRemoveObject(GameObject go)
     {
-        checkAndRemoveObject(go.GetComponent<InteractiveObject>());
+        CheckAndRemoveObject(go.GetComponent<InteractiveObject>());
     }
 
-    private void checkAndRemoveObject(InteractiveObject ia)
+    public void CheckAndRemoveObject(InteractiveObject ia)
     {
         if (checkLagecy(ia.ID)) { return; }
 
@@ -180,7 +180,7 @@ public class LevelManager : LevelManagerBase
 
         if(interactiveObject != null)
         {
-            checkAndRemoveObject(interactiveObject);
+            CheckAndRemoveObject(interactiveObject);
         }
     }
 
@@ -198,7 +198,7 @@ public class LevelManager : LevelManagerBase
             checkAndAddObjectInInventory(result);
             words.Add(getWordText(result.ID));
         }
-        checkAndRemoveObject(source);
+        CheckAndRemoveObject(source);
         dialogSystem.ShowDialog($"把 {words[0]} 拆開後得到了 {words[1]} 跟 {words[2]}");
     }
 
