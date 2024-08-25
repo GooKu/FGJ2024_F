@@ -30,7 +30,7 @@ public class Lv1QTE : StageObject
             remainTime -= Time.deltaTime;
             timeBar.fillAmount = remainTime/time;
         } while (remainTime > 0);
-        levelManager.Fail("冰箱怎麼有... 啊這毒蛇，無藥可醫");
+        failHandle();
     }
 
     public override void Touch(StageObject stageObject)
@@ -43,10 +43,17 @@ public class Lv1QTE : StageObject
         }
         else
         {
-            levelManager.AddLegacy("w026");
-            levelManager.AddLegacy("w014");
-            levelManager.Fail("冰箱怎麼有... 啊這毒蛇，無藥可醫");
+            StopAllCoroutines();
+            failHandle();
         }
+    }
+
+    private void failHandle()
+    {
+        levelManager.AddLegacy("w026");
+        levelManager.AddLegacy("w014");
+        levelManager.Fail("冰箱怎麼有... 啊這毒蛇，無藥可醫");
+        gameObject.SetActive(false);
     }
 
     private void setStep(int value)
@@ -68,6 +75,7 @@ public class Lv1QTE : StageObject
                     levelManager.Dialog("你精準的丟到蛇的嘴巴裡面，三分球！");
                     StopAllCoroutines();
                     PassAction?.Invoke();
+                    gameObject.SetActive(false);
                 }
                 break;
         }
