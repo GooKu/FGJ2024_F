@@ -64,9 +64,11 @@ public class LevelManager : LevelManagerBase
         List<InteractiveObject> iobjs = new();
         for (int i = start; i <= end; i++)
         {
-            iobjs.Add(Instantiate(testWordPrefabs[i]).GetComponent<InteractiveObject>());
+            GameObject go = Instantiate(testWordPrefabs[i]);
+            InteractiveObject obj = go.GetComponent<InteractiveObject>();
+            iobjs.Add(obj);
+            checkAndAddObjectInInventory(obj);
         }
-        inventorySystem.AddItem(iobjs);
     }
 
     private void DebugTestWin()
@@ -76,9 +78,11 @@ public class LevelManager : LevelManagerBase
         List<InteractiveObject> iobjs = new();
         for (int i = 0; i < testWinWordPrefabs.Count; i++)
         {
+            GameObject go = Instantiate(testWinWordPrefabs[i]);
+            InteractiveObject obj = go.GetComponent<InteractiveObject>();
             iobjs.Add(Instantiate(testWinWordPrefabs[i]).GetComponent<InteractiveObject>());
+            checkAndAddObjectInInventory(obj);
         }
-        inventorySystem.AddItem(iobjs);
         Pass();
     }
 
