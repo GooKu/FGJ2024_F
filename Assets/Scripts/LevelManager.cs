@@ -25,6 +25,8 @@ public class LevelManager : LevelManagerBase
 
     private Dictionary<string, WordConfig> lagecyBag = new();
 
+    private List<string> getLagecyThisTime = new();
+
     public override void Init(InventorySystem inventorySystem, DialogSystem dialogSystem)
     {
         this.inventorySystem = inventorySystem;
@@ -76,6 +78,7 @@ public class LevelManager : LevelManagerBase
             var config = wordConfigs[ia.ID];
             config.Image = ia.GetComponent<Image>().sprite;
             lagecyBag.Add(ia.ID, config);
+            getLagecyThisTime.Add(config.Text);
         }
 
         if (inventorySystem.TryFindObjInSlotById(ia.ID, out _)) { return; }
@@ -125,7 +128,8 @@ public class LevelManager : LevelManagerBase
 
     public override void Fail(string message = "")
     {
-        failPanel.Show(message, new());//TODO: check get legacy this time
+        failPanel.Show(message, getLagecyThisTime);
+        getLagecyThisTime.Clear();
     }
 
     public override void Pass(InteractiveObject interactiveObject = null)
