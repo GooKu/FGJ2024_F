@@ -110,11 +110,14 @@ public class LevelManager : LevelManagerBase
     {
         List<string> words = new();
         words.Add(getWordText(a.GetComponent<InteractiveObject>().ID));
-        words.Add(getWordText(b.GetComponent<InteractiveObject>().ID));
+        if (b.GetComponent<InteractiveObject>())
+        {
+            words.Add(getWordText(b.GetComponent<InteractiveObject>().ID));
+            checkAndRemoveObject(b);
+        }
         words.Add(getWordText(result.GetComponent<InteractiveObject>().ID));
         dialogSystem.ShowDialog($"把 {words[0]} 跟 {words[1]} 結合後得到了 {words[2]} ！");
         checkAndRemoveObject(a);
-        checkAndRemoveObject(b);
         CheckAndAddObjectInInventory(result);
     }
 
