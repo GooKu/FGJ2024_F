@@ -73,6 +73,7 @@ public class LevelManager : LevelManagerBase
         if (checkLagecy(ia.ID) && !lagecyBag.ContainsKey(ia.ID))
         {
             var config = wordConfigs[ia.ID];
+            config.Image = ia.GetComponent<Image>().sprite;
             lagecyBag.Add(ia.ID, config);
         }
 
