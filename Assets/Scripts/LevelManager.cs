@@ -29,6 +29,7 @@ public class LevelManager : LevelManagerBase
 
     [Header("Debug")]
     [SerializeField] List<GameObject> testWordPrefabs;
+    [SerializeField] List<GameObject> testWinWordPrefabs;
 
     public override void Init(InventorySystem inventorySystem, DialogSystem dialogSystem)
     {
@@ -51,6 +52,11 @@ public class LevelManager : LevelManagerBase
             StartLevel(1);
             AddDebugItem(2, 4);
         }
+
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            DebugTestWin();
+        }
     }
 
     private void AddDebugItem(int start, int end)
@@ -61,6 +67,19 @@ public class LevelManager : LevelManagerBase
             iobjs.Add(Instantiate(testWordPrefabs[i]).GetComponent<InteractiveObject>());
         }
         inventorySystem.AddItem(iobjs);
+    }
+
+    private void DebugTestWin()
+    {
+        StartLevel(1);
+        inventorySystem.ClearAllItems();
+        List<InteractiveObject> iobjs = new();
+        for (int i = 0; i < testWinWordPrefabs.Count; i++)
+        {
+            iobjs.Add(Instantiate(testWinWordPrefabs[i]).GetComponent<InteractiveObject>());
+        }
+        inventorySystem.AddItem(iobjs);
+        Pass();
     }
 
     private void ReadWordConfig()
@@ -170,18 +189,15 @@ public class LevelManager : LevelManagerBase
 
     public override void Pass(InteractiveObject interactiveObject = null)
     {
-        Debug.Log($"Pass: {interactiveObject.ID}");
         int totalLevelCount = levelPrefabs.Count;
         bool isLastLevel = currentLevel == totalLevelCount - 1;
 
         if (isLastLevel)
         {
-            Debug.Log($"Pass: last");
             winPanel.SetActive(true);
         }
         else
         {
-            Debug.Log($"Pass: to next [{currentLevel + 1}]");
             StartLevel(currentLevel + 1);
         }
 

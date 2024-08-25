@@ -121,20 +121,29 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4349351266032812373, guid: 68c0bbab29539354db4e00e83a176769, type: 3}
+      propertyPath: targetObjects.m_keys.Array.data[0]
+      value: endWord
+      objectReference: {fileID: 0}
+    - target: {fileID: 4349351266032812373, guid: 68c0bbab29539354db4e00e83a176769, type: 3}
       propertyPath: targetObjects.m_values.Array.data[0].data.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4349351266032812373, guid: 68c0bbab29539354db4e00e83a176769, type: 3}
       propertyPath: targetObjects.m_values.Array.data[0].data.Array.data[0].Object
       value: 
-      objectReference: {fileID: 3493700849187792068, guid: 991d0eca0fd7d8f4087e6ff5ee66ef4a, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 4349351266032812373, guid: 68c0bbab29539354db4e00e83a176769, type: 3}
       propertyPath: targetObjects.m_values.Array.data[0].data.Array.data[1].Object
       value: 
       objectReference: {fileID: 3493700849187792068, guid: 262c7f79b20d01f4bab88750e43702d4, type: 3}
     - target: {fileID: 4349351266032812373, guid: 68c0bbab29539354db4e00e83a176769, type: 3}
+      propertyPath: targetObjects.m_values.Array.data[0].data.Array.data[0].StringData
+      value: "\u50CF\u96FB\u5F71\u4E00\u6A23\uFF0C\u4F60\u7559\u4E0B\u7684 Legacy
+        \u70B8\u7FFB\u4E86\u6574\u68DF\u5EFA\u7BC9\uFF0C\u4F60\u77E5\u9053\u4F60\u6703\u662F\u6700\u5F8C\u4E00\u500B\u51FA\u4F86\u7684\u4EBA"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4349351266032812373, guid: 68c0bbab29539354db4e00e83a176769, type: 3}
       propertyPath: targetObjects.m_values.Array.data[0].data.Array.data[0].InteractionType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4349351266032812373, guid: 68c0bbab29539354db4e00e83a176769, type: 3}
       propertyPath: targetObjects.m_values.Array.data[0].data.Array.data[1].InteractionType

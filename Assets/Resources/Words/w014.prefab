@@ -114,18 +114,26 @@ PrefabInstance:
       objectReference: {fileID: 4599138244239292874, guid: 58b8d46e125f59f4bb82d5ef59f04fe8, type: 3}
     - target: {fileID: 4349351266032812373, guid: 68c0bbab29539354db4e00e83a176769, type: 3}
       propertyPath: targetObjects.m_keys.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4349351266032812373, guid: 68c0bbab29539354db4e00e83a176769, type: 3}
       propertyPath: targetObjects.m_values.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4349351266032812373, guid: 68c0bbab29539354db4e00e83a176769, type: 3}
       propertyPath: targetObjects.m_keys.Array.data[0]
       value: w013
       objectReference: {fileID: 0}
     - target: {fileID: 4349351266032812373, guid: 68c0bbab29539354db4e00e83a176769, type: 3}
+      propertyPath: targetObjects.m_keys.Array.data[1]
+      value: endWord
+      objectReference: {fileID: 0}
+    - target: {fileID: 4349351266032812373, guid: 68c0bbab29539354db4e00e83a176769, type: 3}
       propertyPath: targetObjects.m_values.Array.data[0].data.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4349351266032812373, guid: 68c0bbab29539354db4e00e83a176769, type: 3}
+      propertyPath: targetObjects.m_values.Array.data[1].data.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4349351266032812373, guid: 68c0bbab29539354db4e00e83a176769, type: 3}
@@ -137,12 +145,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3493700849187792068, guid: 262c7f79b20d01f4bab88750e43702d4, type: 3}
     - target: {fileID: 4349351266032812373, guid: 68c0bbab29539354db4e00e83a176769, type: 3}
+      propertyPath: targetObjects.m_values.Array.data[1].data.Array.data[0].Object
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4349351266032812373, guid: 68c0bbab29539354db4e00e83a176769, type: 3}
+      propertyPath: targetObjects.m_values.Array.data[1].data.Array.data[0].StringData
+      value: "\u4F60\u770B\u8D77\u4F86\u638C\u63E1\u4E86\u6587\u5B57\uFF0C\u4F46\u4F60\u5176\u5BE6\u6C92\u6709\uFF0C\u4F60\u958B\u59CB\u80E1\u8A00\u4E82\u8A9E\uFF0C\u4F60\u7559\u4E0B\u7684
+        Legacy\uFF0C\u5C31\u662F\u5931\u8A9E\u75C7\u7684\u4F60\u81EA\u5DF1"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4349351266032812373, guid: 68c0bbab29539354db4e00e83a176769, type: 3}
       propertyPath: targetObjects.m_values.Array.data[0].data.Array.data[0].InteractionType
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4349351266032812373, guid: 68c0bbab29539354db4e00e83a176769, type: 3}
       propertyPath: targetObjects.m_values.Array.data[0].data.Array.data[1].InteractionType
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4349351266032812373, guid: 68c0bbab29539354db4e00e83a176769, type: 3}
+      propertyPath: targetObjects.m_values.Array.data[1].data.Array.data[0].InteractionType
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

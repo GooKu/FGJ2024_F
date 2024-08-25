@@ -114,15 +114,15 @@ PrefabInstance:
       objectReference: {fileID: 4599138244239292874, guid: 58b8d46e125f59f4bb82d5ef59f04fe8, type: 3}
     - target: {fileID: 4349351266032812373, guid: 68c0bbab29539354db4e00e83a176769, type: 3}
       propertyPath: targetObjects.m_keys.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4349351266032812373, guid: 68c0bbab29539354db4e00e83a176769, type: 3}
       propertyPath: targetObjects.m_values.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4349351266032812373, guid: 68c0bbab29539354db4e00e83a176769, type: 3}
       propertyPath: targetObjects.m_keys.Array.data[0]
-      value: w017
+      value: endWord
       objectReference: {fileID: 0}
     - target: {fileID: 4349351266032812373, guid: 68c0bbab29539354db4e00e83a176769, type: 3}
       propertyPath: targetObjects.m_values.Array.data[0].data.Array.size
@@ -131,14 +131,19 @@ PrefabInstance:
     - target: {fileID: 4349351266032812373, guid: 68c0bbab29539354db4e00e83a176769, type: 3}
       propertyPath: targetObjects.m_values.Array.data[0].data.Array.data[0].Object
       value: 
-      objectReference: {fileID: 3493700849187792068, guid: 95a1237a705a62f44816faff065d3b54, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 4349351266032812373, guid: 68c0bbab29539354db4e00e83a176769, type: 3}
       propertyPath: targetObjects.m_values.Array.data[0].data.Array.data[1].Object
       value: 
       objectReference: {fileID: 3493700849187792068, guid: 262c7f79b20d01f4bab88750e43702d4, type: 3}
     - target: {fileID: 4349351266032812373, guid: 68c0bbab29539354db4e00e83a176769, type: 3}
+      propertyPath: targetObjects.m_values.Array.data[0].data.Array.data[0].StringData
+      value: "\u4F60\u628A\u6240\u6709\u61A4\u6012\u90FD\u62C9\u6210\u4E00\u5EA7\u5C0F\u5C71\uFF0C\u4F60\u7684
+        Legacy \u8B93\u4E0B\u4E00\u500B\u4EBA\u51FA\u4F86\u7684\u6642\u5019\u6703\u7F75\u9AD2\u8A71"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4349351266032812373, guid: 68c0bbab29539354db4e00e83a176769, type: 3}
       propertyPath: targetObjects.m_values.Array.data[0].data.Array.data[0].InteractionType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4349351266032812373, guid: 68c0bbab29539354db4e00e83a176769, type: 3}
       propertyPath: targetObjects.m_values.Array.data[0].data.Array.data[1].InteractionType
