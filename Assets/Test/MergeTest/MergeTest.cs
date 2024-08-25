@@ -15,7 +15,7 @@ public class MergeTest : LevelManagerBase
     {
         throw new System.NotImplementedException();
     }
-    public override void Fail()
+    public override void Fail(string message = "")
     {
         throw new System.NotImplementedException();
     }

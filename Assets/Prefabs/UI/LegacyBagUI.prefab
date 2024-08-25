@@ -441,8 +441,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1562427930532350469}
   m_HandleRect: {fileID: 2851819281869086089}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 1
+  m_Value: 1
+  m_Size: 0.9999853
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -671,7 +671,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ddb51127d6aebb40a25390aa6b74fef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonSample: {fileID: 0}
+  buttonSample: {fileID: 3849422237246050214}
 --- !u!1 &4997501501052831809
 GameObject:
   m_ObjectHideFlags: 0
@@ -1144,7 +1144,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000094976844}
+  m_AnchoredPosition: {x: 0, y: 0.000031302992}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &8024617904943534701

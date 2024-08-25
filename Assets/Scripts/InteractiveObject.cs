@@ -16,18 +16,12 @@ public class InteractiveObject : StageObject, IBeginDragHandler, IDragHandler, I
     private GraphicRaycaster raycaster;
 
     private Vector3 orgPos;
-    private LevelManagerBase levelManager;
 
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
         canvas = GameObject.FindObjectOfType<Canvas>();
         raycaster = canvas.GetComponent<GraphicRaycaster>();
-    }
-
-    private void Start()
-    {
-        levelManager = GameObject.FindObjectOfType<LevelManagerBase>();
     }
 
     public void OnBeginDrag(PointerEventData eventData)

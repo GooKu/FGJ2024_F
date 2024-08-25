@@ -8,11 +8,9 @@ public class MessageObject : StageObject
 {
     [SerializeField] private string message;
 
-    private LevelManagerBase levelManager;
-
-    private void Start()
+    protected override void Start()
     {
-        levelManager = GameObject.FindObjectOfType<LevelManagerBase>();
+        base.Start();
         GetComponent<Button>().onClick.AddListener(OnClick);
     }
 
