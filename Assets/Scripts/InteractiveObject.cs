@@ -11,9 +11,13 @@ public class InteractiveObject : StageObject, IBeginDragHandler, IDragHandler, I
     [SerializeField] ReferenceInteractiveDictionary targetObjects;
     [SerializeField] public List<InteractiveObject> dismantleResults;
 
+    [SerializeField] Sprite wordSprite;
+    [SerializeField] Sprite imgSprite;
+
     private RectTransform rectTransform;
     private Canvas canvas;
     private GraphicRaycaster raycaster;
+    private Image img;
 
     private Vector3 orgPos;
 
@@ -22,6 +26,8 @@ public class InteractiveObject : StageObject, IBeginDragHandler, IDragHandler, I
         rectTransform = GetComponent<RectTransform>();
         canvas = GameObject.FindObjectOfType<Canvas>();
         raycaster = canvas.GetComponent<GraphicRaycaster>();
+        wordSprite = GetComponent<Image>().sprite;
+        img = GetComponent<Image>();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -32,6 +38,15 @@ public class InteractiveObject : StageObject, IBeginDragHandler, IDragHandler, I
     public void OnDrag(PointerEventData eventData)
     {
         rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        List<RaycastResult> raycastResults = GetEventSystemRaycastResults();
+        if (imgSprite != null && IsPointerOverUIElement(raycastResults, "ChangeImgArea"))
+        {
+            img.sprite = imgSprite;
+        }
+        else if (wordSprite != null && IsPointerOverUIElement(raycastResults, "ChangeWordArea"))
+        {
+            img.sprite = wordSprite;
+        }
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -61,7 +76,12 @@ public class InteractiveObject : StageObject, IBeginDragHandler, IDragHandler, I
                     case InteractionType.Merge:
                         {
                             levelManager.Merge(gameObject, result.gameObject, action.Object);
-                        }break;
+                            if (!string.IsNullOrEmpty(action.StringData))
+                            {
+                                levelManager.Dialog(action.StringData);
+                            }
+                        }
+                        break;
                     case InteractionType.Pass:
                         {
                             levelManager.Pass(this);
@@ -86,6 +106,10 @@ public class InteractiveObject : StageObject, IBeginDragHandler, IDragHandler, I
                         } break;
                     case InteractionType.AddObject:
                         {
+                            if (!string.IsNullOrEmpty(action.StringData))
+                            {
+                                levelManager.Dialog(action.StringData);
+                            }
                             levelManager.CheckAndAddObjectInInventory(action.Object);
                             BackToOrgPos();
                         }
@@ -100,6 +124,7 @@ public class InteractiveObject : StageObject, IBeginDragHandler, IDragHandler, I
     public void BackToOrgPos()
     {
         transform.DOLocalMove(orgPos, .1f);
+        img.sprite = wordSprite;
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -107,5 +132,31 @@ public class InteractiveObject : StageObject, IBeginDragHandler, IDragHandler, I
         if(dismantleResults.Count == 0) { return; }
         if (eventData.clickCount < 2) { return; }
         levelManager.Dismantle(this, dismantleResults);
+    }
+
+    ///Returns 'true' if we touched or hovering on Unity UI element.
+    public static bool IsPointerOverUIElement(List<RaycastResult> eventSystemRaysastResults, string layerName)
+    {
+        for (int index = 0; index < eventSystemRaysastResults.Count; index++)
+        {
+            RaycastResult curRaysastResult = eventSystemRaysastResults[index];
+
+            if (curRaysastResult.gameObject.layer == LayerMask.NameToLayer(layerName))
+                return true;
+        }
+
+        return false;
+    }
+
+    ///Gets all event systen raycast results of current mouse or touch position.
+    static List<RaycastResult> GetEventSystemRaycastResults()
+    {
+        PointerEventData eventData = new PointerEventData(EventSystem.current);
+        eventData.position = Input.mousePosition;
+
+        List<RaycastResult> raysastResults = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventData, raysastResults);
+
+        return raysastResults;
     }
 }

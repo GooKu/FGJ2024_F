@@ -101,6 +101,10 @@ PrefabInstance:
       value: w021
       objectReference: {fileID: 0}
     - target: {fileID: 4349351266032812373, guid: 68c0bbab29539354db4e00e83a176769, type: 3}
+      propertyPath: imgSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f5e9010b2ef770548b9bdd66c75f3d0e, type: 3}
+    - target: {fileID: 4349351266032812373, guid: 68c0bbab29539354db4e00e83a176769, type: 3}
       propertyPath: dismantleResults.Array.size
       value: 2
       objectReference: {fileID: 0}
