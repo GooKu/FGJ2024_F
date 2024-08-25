@@ -18,7 +18,7 @@ public class LevelManager : LevelManagerBase
     [SerializeField] Transform levelRoot;
     [SerializeField] List<GameObject> levelPrefabs;
 
-    [SerializeField] GameObject failPanel;
+    [SerializeField] FailUI failPanel;
     [SerializeField] Button restartBtn;
     [SerializeField] GameObject winPanel;
     [SerializeField] LegacyBagUI legacyBagUI;
@@ -84,7 +84,7 @@ public class LevelManager : LevelManagerBase
 
     public override void StartLevel(int level)
     {
-        failPanel.SetActive(false);
+        failPanel.gameObject.SetActive(false);
         winPanel.SetActive(false);
 
         dialogSystem.ClearDialog();
@@ -123,9 +123,9 @@ public class LevelManager : LevelManagerBase
         dialogSystem.ShowDialog(message);
     }
 
-    public override void Fail()
+    public override void Fail(string message = "")
     {
-        failPanel.SetActive(true);
+        failPanel.Show(message, new());//TODO: check get legacy this time
     }
 
     public override void Pass(InteractiveObject interactiveObject = null)

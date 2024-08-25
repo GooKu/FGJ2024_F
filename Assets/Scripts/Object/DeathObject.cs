@@ -4,18 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Button))]
-public class DisposableBox : StageObject
+public class DeathObject : StageObject
 {
     [SerializeField] private GameObject[] items;
-    [SerializeField] private string stroy;
-
-    private Button button;
+    [SerializeField] private string message;
 
     protected override void Start()
     {
         base.Start();
-        button = GetComponent<Button>();
-        button.onClick.AddListener(OnClick);
+        GetComponent<Button>().onClick.AddListener(OnClick);
     }
 
     public void OnClick()
@@ -24,7 +21,6 @@ public class DisposableBox : StageObject
         {
             levelManager.GetItem(item);
         }
-        levelManager.Dialog(stroy);
-        button.interactable = false;
+        levelManager.Fail(message);
     }
 }
