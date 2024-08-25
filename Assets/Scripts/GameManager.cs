@@ -23,18 +23,6 @@ public class GameManager : MonoBehaviour
         titlePage.SetActive(true);
     }
 
-    void Update()
-    {
-        if (Input.GetKey(KeyCode.C))
-        {
-            levelManager.Pass();
-        }
-        if (Input.GetKey(KeyCode.V))
-        {
-            levelManager.Fail();
-        }
-    }
-
     public void StartNewGame(int level)
     {
         // setup main scene

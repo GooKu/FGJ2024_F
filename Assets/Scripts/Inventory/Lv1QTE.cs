@@ -65,11 +65,14 @@ public class Lv1QTE : StageObject
             case 0:
                 {
                     goal = "wc002";
-                }break;
+                    SoundManager.PlaySnakeSound();
+                }
+                break;
             case 1:
                 {
                     levelManager.Dialog("毒箭好像減緩了他的速度，讓我可以慢慢瞄準");
                     goal = "wc001";
+                    SoundManager.PlayArrowSound();
                 }break;
             case 2:
                 {
@@ -77,6 +80,7 @@ public class Lv1QTE : StageObject
                     StopAllCoroutines();
                     PassAction?.Invoke();
                     gameObject.SetActive(false);
+                    SoundManager.PlayExplodeSound();
                 }
                 break;
         }

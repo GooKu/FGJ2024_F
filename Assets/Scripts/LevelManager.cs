@@ -122,6 +122,8 @@ public class LevelManager : LevelManagerBase
         }
         checkAndRemoveObject(a);
         CheckAndAddObjectInInventory(result);
+
+        SoundManager.PlayOperateSound();
     }
 
     public void CheckAndAddObjectInInventory(GameObject go)
@@ -199,6 +201,8 @@ public class LevelManager : LevelManagerBase
     {
         failPanel.Show(message, getLagecyThisTime);
         getLagecyThisTime.Clear();
+
+        SoundManager.PlayDeathSound();
     }
 
     public override void Pass(InteractiveObject interactiveObject = null)
@@ -209,6 +213,7 @@ public class LevelManager : LevelManagerBase
         if (isLastLevel)
         {
             winPanel.SetActive(true);
+            dialogSystem.ClearDialog();
         }
         else
         {
@@ -237,6 +242,8 @@ public class LevelManager : LevelManagerBase
         }
         CheckAndRemoveObject(source);
         dialogSystem.ShowDialog($"把 {words[0]} 拆開後得到了 {words[1]} 跟 {words[2]}");
+
+        SoundManager.PlayOperateSound();
     }
 
     //setup at button
