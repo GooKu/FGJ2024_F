@@ -233,7 +233,12 @@ public class LevelManager : LevelManagerBase
     //setup at button
     public void AddLegacyFromBag(LegacyButton button)
     {
-        var obj = Resources.Load<InteractiveObject>($"Words/{button.ID}");
+        AddLegacy(button.ID);
+    }
+
+    public void AddLegacy(string id)
+    {
+        var obj = Resources.Load<InteractiveObject>($"Words/{id}");
         checkAndAddObjectInInventory(obj);
     }
 
