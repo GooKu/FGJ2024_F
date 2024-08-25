@@ -405,6 +405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 383553093c911e547a50e0b05d63c9d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: door
   message: "\u9580\u9396\u5F97\u5F88\u6B7B\uFF0C\u8981\u627E\u627E\u9470\u5319"
 --- !u!1 &5371578514538306177
 GameObject:
@@ -750,6 +751,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 383553093c911e547a50e0b05d63c9d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 
   message: "\u525B\u525B\u624D\u9192\u4F86\uFF0C\u61C9\u8A72\u662F\u4E0D\u7528\u518D\u7761\u4E86"
 --- !u!1 &5938022585690863155
 GameObject:

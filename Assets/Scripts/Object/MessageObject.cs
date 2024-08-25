@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Button))]
-public class MessageObject : MonoBehaviour
+public class MessageObject : StageObject
 {
     [SerializeField] private string message;
 

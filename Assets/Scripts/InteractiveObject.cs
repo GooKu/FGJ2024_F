@@ -6,10 +6,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InteractiveObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
+public class InteractiveObject : StageObject, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
-    [SerializeField] private string id;
-    public string ID => id;
     [SerializeField] ReferenceInteractiveDictionary targetObjects;
     [SerializeField] public List<InteractiveObject> dismantleResults;
 
@@ -54,8 +52,8 @@ public class InteractiveObject : MonoBehaviour, IBeginDragHandler, IDragHandler,
         {
             if (result.gameObject == gameObject) { continue; }
             //Debug.Log("Overlap detected with: " + result.gameObject.name);
-            if(!result.gameObject.TryGetComponent<InteractiveObject>(out var interactiveObject)) { continue; }
-            if (!targetObjects.TryGetValue(interactiveObject.ID, out var actions))
+            if(!result.gameObject.TryGetComponent<StageObject>(out var stageObject)) { continue; }
+            if (!targetObjects.TryGetValue(stageObject.ID, out var actions))
             {
                 backToOrgPos();
                 return;
