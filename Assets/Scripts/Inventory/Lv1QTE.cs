@@ -15,6 +15,7 @@ public class Lv1QTE : StageObject
     protected override void Start()
     {
         base.Start();
+        setStep(0);
         StartCoroutine(countDown(10));
     }
 

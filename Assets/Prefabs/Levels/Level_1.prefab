@@ -1020,8 +1020,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f58270fff237e04bb9ba683436154ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: w015
-  items: []
+  id: 
+  items:
+  - {fileID: 3493700849187792068, guid: 058956e82e060cd41a1a8451cc9cfb0d, type: 3}
   stroy: "\u770B\u8D77\u4F86\u8001\u820A\u7684\u526A\u5200\uFF0C\u96D6\u7136\u4E0D\u92D2\u5229\uFF0C\u4F46\u9084\u662F\u5148\u6536\u8457 "
 --- !u!1 &5571980977812725212
 GameObject:
