@@ -13,4 +13,6 @@ public class StageObject : MonoBehaviour
     {
         levelManager = GameObject.FindObjectOfType<LevelManager>();
     }
+
+    public virtual void Touch(StageObject stageObject) { }
 }
