@@ -73,7 +73,9 @@ public class InteractiveObject : StageObject, IBeginDragHandler, IDragHandler, I
                     case InteractionType.Dialog:
                         {
                             levelManager.Dialog(action.StringData);
-                        }break;
+                            backToOrgPos();
+                        }
+                        break;
                     case InteractionType.DeleteSelf:
                         {
                             if (!string.IsNullOrEmpty(action.StringData))
