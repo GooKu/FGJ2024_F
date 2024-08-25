@@ -150,8 +150,7 @@ public class LevelManager : LevelManagerBase
 
     public override void GetItem(GameObject item)
     {
-        var obj = Instantiate(item);
-        inventorySystem.AddItem(obj.GetComponent<InteractiveObject>());
+        checkAndAddObjectInInventory(item);
     }
 
     public override void Dismantle(InteractiveObject source, List<InteractiveObject> results)
@@ -171,6 +170,12 @@ public class LevelManager : LevelManagerBase
     public void ShowLegacyBag()
     {
         legacyBagUI.Show(lagecyBag);
+    }
+    //setup at button
+    public void AddLegacyFromBag(LegacyButton button)
+    {
+        var obj = Resources.Load<InteractiveObject>($"Words/{button.ID}");
+        checkAndAddObjectInInventory(obj);
     }
 
     private string getWordText(string id)

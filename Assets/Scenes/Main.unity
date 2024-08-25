@@ -3748,6 +3748,38 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4946769447112905968, guid: b7067f16d70e2d646b22d423c2a7585a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4946769447112905968, guid: b7067f16d70e2d646b22d423c2a7585a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4946769447112905968, guid: b7067f16d70e2d646b22d423c2a7585a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 142736980}
+    - target: {fileID: 4946769447112905968, guid: b7067f16d70e2d646b22d423c2a7585a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4946769447112905968, guid: b7067f16d70e2d646b22d423c2a7585a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AddLegacyFromBag
+      objectReference: {fileID: 0}
+    - target: {fileID: 4946769447112905968, guid: b7067f16d70e2d646b22d423c2a7585a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LevelManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4946769447112905968, guid: b7067f16d70e2d646b22d423c2a7585a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 5456053001892911481}
+    - target: {fileID: 4946769447112905968, guid: b7067f16d70e2d646b22d423c2a7585a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: LegacyButton, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 5695072279037056635, guid: b7067f16d70e2d646b22d423c2a7585a, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -3869,6 +3901,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7067f16d70e2d646b22d423c2a7585a, type: 3}
+--- !u!114 &5456053001892911481 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3849422237246050214, guid: b7067f16d70e2d646b22d423c2a7585a, type: 3}
+  m_PrefabInstance: {fileID: 5456053001892911480}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cba2b44c4a70c34d8d112a5678c5886, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7584882596579070098
 PrefabInstance:
   m_ObjectHideFlags: 0
