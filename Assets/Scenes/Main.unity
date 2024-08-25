@@ -1218,6 +1218,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 433937313}
   m_CullTransparentMesh: 1
+--- !u!1 &501154526 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7998270929269503552, guid: b7067f16d70e2d646b22d423c2a7585a, type: 3}
+  m_PrefabInstance: {fileID: 5456053001892911480}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &501154529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 501154526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 2
+  m_VerticalFit: 2
 --- !u!1001 &505603120
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3801,8 +3820,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: c06bf64d3ab689243b8565d5d94c0f46, type: 3}
     - target: {fileID: 7989067294117559481, guid: b7067f16d70e2d646b22d423c2a7585a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -286
+      objectReference: {fileID: 0}
+    - target: {fileID: 7989067294117559481, guid: b7067f16d70e2d646b22d423c2a7585a, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7989067294117559481, guid: b7067f16d70e2d646b22d423c2a7585a, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0.00003341657
+      objectReference: {fileID: 0}
+    - target: {fileID: 8024617904943534701, guid: b7067f16d70e2d646b22d423c2a7585a, type: 3}
+      propertyPath: m_StartAxis
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8024617904943534701, guid: b7067f16d70e2d646b22d423c2a7585a, type: 3}
+      propertyPath: m_Constraint
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8111701698771624216, guid: b7067f16d70e2d646b22d423c2a7585a, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3872,7 +3907,10 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 6554095845504593242, guid: b7067f16d70e2d646b22d423c2a7585a, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7998270929269503552, guid: b7067f16d70e2d646b22d423c2a7585a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 501154529}
   m_SourcePrefab: {fileID: 100100000, guid: b7067f16d70e2d646b22d423c2a7585a, type: 3}
 --- !u!114 &5456053001892911481 stripped
 MonoBehaviour:
