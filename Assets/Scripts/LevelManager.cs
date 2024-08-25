@@ -29,7 +29,6 @@ public class LevelManager : LevelManagerBase
 
     [Header("Debug")]
     [SerializeField] List<GameObject> testWordPrefabs;
-    [SerializeField] Vector2Int addWordRange;
 
     public override void Init(InventorySystem inventorySystem, DialogSystem dialogSystem)
     {
@@ -42,14 +41,19 @@ public class LevelManager : LevelManagerBase
     {
         if (Input.GetKeyDown(KeyCode.T))
         {
-            List<InteractiveObject> iobjs = new();
-            Debug.Log($"add {addWordRange.x}-{addWordRange.y}");
-            for (int i = addWordRange.x; i < addWordRange.y + 1; i++)
-            {
-                iobjs.Add(Instantiate(testWordPrefabs[i]).GetComponent<InteractiveObject>());
-            }
-            inventorySystem.AddItem(iobjs);
+            StartLevel(1);
+            AddDebugItem(2, 4);
         }
+    }
+
+    private void AddDebugItem(int start, int end)
+    {
+        List<InteractiveObject> iobjs = new();
+        for (int i = start; i <= end; i++)
+        {
+            iobjs.Add(Instantiate(testWordPrefabs[i]).GetComponent<InteractiveObject>());
+        }
+        inventorySystem.AddItem(iobjs);
     }
 
     private void ReadWordConfig()
@@ -114,6 +118,13 @@ public class LevelManager : LevelManagerBase
         Destroy(levelRoot.Find($"Level_{level}").gameObject);
         Instantiate(levelPrefabs[level], levelRoot).name = $"Level_{level}";
         RegisterRestartBtnEvent(level);
+
+
+        // for preventing item removed by fail in level 1
+        if (level == 1)
+        {
+            AddDebugItem(0, 1);
+        }
     }
 
     private void RestartLevel(int level)
@@ -152,15 +163,18 @@ public class LevelManager : LevelManagerBase
 
     public override void Pass(InteractiveObject interactiveObject = null)
     {
+        Debug.Log($"Pass: {interactiveObject.ID}");
         int totalLevelCount = levelPrefabs.Count;
         bool isLastLevel = currentLevel == totalLevelCount - 1;
 
         if (isLastLevel)
         {
+            Debug.Log($"Pass: last");
             winPanel.SetActive(true);
         }
         else
         {
+            Debug.Log($"Pass: to next [{currentLevel + 1}]");
             StartLevel(currentLevel + 1);
         }
 
