@@ -116,7 +116,10 @@ public class LevelManager : LevelManagerBase
             checkAndRemoveObject(b);
         }
         words.Add(getWordText(result.GetComponent<InteractiveObject>().ID));
-        dialogSystem.ShowDialog($"把 {words[0]} 跟 {words[1]} 結合後得到了 {words[2]} ！");
+        if(words.Count > 2)
+        {
+            dialogSystem.ShowDialog($"把 {words[0]} 跟 {words[1]} 結合後得到了 {words[2]} ！");
+        }
         checkAndRemoveObject(a);
         CheckAndAddObjectInInventory(result);
     }
