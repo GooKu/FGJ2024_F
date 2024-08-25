@@ -21,6 +21,7 @@ public class LevelManager : LevelManagerBase
     [SerializeField] GameObject failPanel;
     [SerializeField] Button restartBtn;
     [SerializeField] GameObject winPanel;
+    [SerializeField] LegacyBagUI legacyBagUI;
 
     private Dictionary<string, WordConfig> lagecyBag = new();
 
@@ -159,6 +160,12 @@ public class LevelManager : LevelManagerBase
         }
         checkAndRemoveObject(source);
         dialogSystem.ShowDialog($"把 {words[0]} 拆開後得到了 {words[1]} 跟 {words[2]}");
+    }
+
+    //setup at button
+    public void ShowLegacyBag()
+    {
+        legacyBagUI.Show(lagecyBag);
     }
 
     private string getWordText(string id)
