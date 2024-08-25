@@ -27,13 +27,31 @@ public class LevelManager : LevelManagerBase
 
     private List<string> getLagecyThisTime = new();
 
+    [Header("Debug")]
+    [SerializeField] List<GameObject> testWordPrefabs;
+    [SerializeField] Vector2Int addWordRange;
+
     public override void Init(InventorySystem inventorySystem, DialogSystem dialogSystem)
     {
         this.inventorySystem = inventorySystem;
         this.dialogSystem = dialogSystem;
         ReadWordConfig();
     }
-    
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            List<InteractiveObject> iobjs = new();
+            Debug.Log($"add {addWordRange.x}-{addWordRange.y}");
+            for (int i = addWordRange.x; i < addWordRange.y + 1; i++)
+            {
+                iobjs.Add(Instantiate(testWordPrefabs[i]).GetComponent<InteractiveObject>());
+            }
+            inventorySystem.AddItem(iobjs);
+        }
+    }
+
     private void ReadWordConfig()
     {
         string[] lines = wordConfigSource.text.Split("\r\n");
