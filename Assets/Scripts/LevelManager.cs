@@ -176,7 +176,11 @@ public class LevelManager : LevelManagerBase
 
     public void CheckAndRemoveObject(InteractiveObject ia)
     {
-        if (checkLagecy(ia.ID)) { return; }
+        if (checkLagecy(ia.ID)) 
+        {
+            ia.BackToOrgPos();
+            return;
+        }
 
         if (inventorySystem.TryFindObjInSlotById(ia.ID, out _))
         {
