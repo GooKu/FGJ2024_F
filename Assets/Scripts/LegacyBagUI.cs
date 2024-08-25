@@ -12,6 +12,8 @@ public class LegacyBagUI : MonoBehaviour
 
     public void Show(Dictionary<string, WordConfig> datas)
     {
+        if (gameObject.activeSelf) { return; }
+
         foreach(var l in datas)
         {
             LegacyButton button;
