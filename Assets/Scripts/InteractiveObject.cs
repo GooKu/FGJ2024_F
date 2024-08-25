@@ -32,7 +32,7 @@ public class InteractiveObject : StageObject, IBeginDragHandler, IDragHandler, I
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        orgPos = gameObject.transform.position;
+        orgPos = gameObject.transform.localPosition;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -69,7 +69,7 @@ public class InteractiveObject : StageObject, IBeginDragHandler, IDragHandler, I
                         }break;
                     case InteractionType.Pass:
                         {
-                            levelManager.Pass();
+                            levelManager.Pass(this);
                         }break;
                     case InteractionType.Fail:
                         {
@@ -88,7 +88,7 @@ public class InteractiveObject : StageObject, IBeginDragHandler, IDragHandler, I
 
     private void backToOrgPos()
     {
-        transform.DOMove(orgPos, .1f);
+        transform.DOLocalMove(orgPos, .1f);
     }
 
     public void OnPointerClick(PointerEventData eventData)
