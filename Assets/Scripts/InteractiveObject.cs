@@ -50,7 +50,7 @@ public class InteractiveObject : StageObject, IBeginDragHandler, IDragHandler, I
             stageObject.Touch(this);
             if (!targetObjects.TryGetValue(stageObject.ID, out var actions))
             {
-                backToOrgPos();
+                BackToOrgPos();
                 return;
             }
 
@@ -73,7 +73,7 @@ public class InteractiveObject : StageObject, IBeginDragHandler, IDragHandler, I
                     case InteractionType.Dialog:
                         {
                             levelManager.Dialog(action.StringData);
-                            backToOrgPos();
+                            BackToOrgPos();
                         }
                         break;
                     case InteractionType.DeleteSelf:
@@ -87,17 +87,17 @@ public class InteractiveObject : StageObject, IBeginDragHandler, IDragHandler, I
                     case InteractionType.AddObject:
                         {
                             levelManager.CheckAndAddObjectInInventory(action.Object);
-                            backToOrgPos();
+                            BackToOrgPos();
                         }
                         break;
                 }
             }
             return;
         }
-        backToOrgPos();
+        BackToOrgPos();
     }
 
-    private void backToOrgPos()
+    public void BackToOrgPos()
     {
         transform.DOLocalMove(orgPos, .1f);
     }
